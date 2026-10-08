@@ -9,7 +9,7 @@
 </h1>
 
 <p align="center">
-  <strong>Self-hosted music downloader. Paste a Spotify link, get a perfectly tagged audio file — no API keys, no account, no hassle.</strong>
+  <strong>Self-hosted music downloader. Paste a Spotify link, get a perfectly tagged audio filee — no API keys, no account, no hassle.</strong>
 </p>
 
 <div align="center">
