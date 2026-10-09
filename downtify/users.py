@@ -51,9 +51,8 @@ _SCRYPT_MAXMEM = 64 * 1024 * 1024
 
 ROLE_ADMIN = 'admin'
 ROLE_USER = 'user'
-ROLES = (ROLE_ADMIN, ROLE_USER)
-
-DEFAULT_USERNAME = 'admin'
+ROLE_GUEST = 'guest'
+ROLES = (ROLE_ADMIN, ROLE_USER, ROLE_GUEST)
 DEFAULT_PASSWORD = 'downtify'
 
 #: Usernames: 3-32 letters, digits, dots, dashes or underscores.

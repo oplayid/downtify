@@ -23,9 +23,9 @@
     <ShortcutsDialog v-model:open="shortcutsOpen" />
     <UiToasts />
     <UiDialog />
-    <CreatePlaylistModal />
-    <RenamePlaylistModal />
-    <AddTracksToPlaylistModal />
+    <CreatePlaylistModal v-if="auth.user.value?.role !== 'guest'" />
+    <RenamePlaylistModal v-if="auth.user.value?.role !== 'guest'" />
+    <AddTracksToPlaylistModal v-if="auth.user.value?.role !== 'guest'" />
     <DefaultPasswordPrompt />
     <ReplaceAudioDialog v-if="auth.isAdmin.value" />
   </div>
@@ -120,4 +120,19 @@ useShortcuts({
     shortcutsOpen.value ||
     ui.modals.value.length > 0,
 })
+
+// =========================================================================
+// 🚀 KODE BARU: ROBOT PENGAWAS GUEST AMAN DISUNTIKKAN DI SINI
+// =========================================================================
+watch(
+  () => route.name,
+  (routeName) => {
+    const role = auth.user.value?.role
+    if (role === 'guest' && (routeName === 'queue' || routeName === 'settings')) {
+      ui.toast("Akses ditolak: Akun Tamu tidak diizinkan membuka menu ini.", { kind: 'error' })
+      router.push({ name: 'dashboard' }) // Tendang balik ke halaman utama
+    }
+  }
+)
 </script>
+

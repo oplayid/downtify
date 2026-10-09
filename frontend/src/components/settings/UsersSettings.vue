@@ -106,12 +106,15 @@
             show-labels
             :options="[
               { value: 'user', icon: 'user', label: t('account.roleUser') },
+              { value: 'guest', icon: 'user', label: 'Guest' },
               { value: 'admin', icon: 'shield', label: t('account.roleAdmin') },
             ]"
           />
           <span class="text-xs text-muted">{{
             editing.role === 'admin'
               ? t('users.roleAdminHint')
+              : editing.role === 'guest'
+              ? 'Akun Tamu: Hanya bisa mendengarkan lagu tanpa hak akses unduh atau hapus.'
               : t('users.roleUserHint')
           }}</span>
         </div>

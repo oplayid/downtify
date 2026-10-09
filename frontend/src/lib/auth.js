@@ -11,6 +11,7 @@ export function needsSignIn(status) {
 }
 
 export const ROLE_ADMIN = 'admin'
+export const ROLE_GUEST = 'guest'
 
 /**
  * The Settings sections a user may open: everything for an admin, but
@@ -21,9 +22,18 @@ export function settingsSectionsFor(role, sections, { authDisabled } = {}) {
   const shown = authDisabled
     ? sections.filter((section) => !section.accounts)
     : sections
+    
   if (role === ROLE_ADMIN) return shown
+  
+  // Jika rolenya adalah GUEST, sembunyikan menu Admin DAN menu unduhan/sistem yang tidak perlu
+  if (role === ROLE_GUEST) {
+    return shown.filter((section) => !section.admin && !section.downloads && !section.server)
+  }
+  
+  // Ini untuk role USER biasa (bukan admin, bukan guest)
   return shown.filter((section) => !section.admin)
 }
+
 
 /**
  * What a player sends to `POST /api/activity/playback` about `track`

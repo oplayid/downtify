@@ -12,6 +12,7 @@ const loaded = ref(false)
 
 const user = computed(() => status.value?.user || null)
 const isAdmin = computed(() => user.value?.role === ROLE_ADMIN)
+const isGuest = computed(() => user.value?.role === 'guest')
 // DOWNTIFY_DISABLE_AUTH: nobody signs in, so there is nothing to sign out
 // of and no accounts to manage.
 const authDisabled = computed(() => Boolean(status.value?.auth_disabled))
@@ -66,6 +67,7 @@ export function useAuth() {
     mustSignIn,
     user,
     isAdmin,
+    isGuest,
     authDisabled,
     load,
     signIn,
