@@ -996,7 +996,7 @@ export default {
     wrongPassword: 'Wrong username or password',
     tooMany: 'Too many attempts. Wait a few minutes and try again.',
     forgotHint:
-      'Forgot the admin password? Run “python main.py auth-reset” on the server.',
+      'Guest Account - Username: guest, Password: guest1234',
     noticeTitle: 'OPLAY.ID now has user accounts',
     noticeBody:
       'Everyone signs in with a username and password now, and an admin can add accounts for other people in Settings → Users. Sign in with:',
